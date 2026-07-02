@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Foto - Gesture Blur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 Foto Blur dengan Gesture</h1>
+            <p>Tunjukkan dua jari untuk blur, tutup jari untuk normal</p>
+        </header>
+
+        <div class="main-content">
+            <div class="video-container">
+                <video id="video" playsinline></video>
+                <canvas id="canvas"></canvas>
+                <div id="status" class="status">
+                    <p>Tunggu sebentar...</p>
+                </div>
+                <div id="gesture-indicator" class="gesture-indicator">
+                    <span id="gesture-text">-</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="captureBtn" class="btn btn-primary">📸 Ambil Foto</button>
+                <button id="toggleBtn" class="btn btn-secondary">⏸️ Pause Camera</button>
+            </div>
+
+            <div id="gallery" class="gallery">
+                <h2>Galeri Foto</h2>
+                <div id="photoGrid" class="photo-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose"></script>
+    <script src="app.js"></script>
+</body>
+</html>
