@@ -1,0 +1,351 @@
+/* ==================== Reset & Base ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==================== Container ==================== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ==================== Header ==================== */
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    animation: slideDown 0.6s ease-out;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* ==================== Main Content ==================== */
+.main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== Video Container ==================== */
+.video-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    aspect-ratio: 4 / 3;
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+/* ==================== Status ==================== */
+.status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.status p {
+    color: white;
+    font-size: 1.5em;
+    animation: pulse 1.5s infinite;
+}
+
+.status.hidden {
+    display: none !important;
+}
+
+/* ==================== Gesture Indicator ==================== */
+.gesture-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.95em;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+}
+
+#gesture-text {
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.gesture-indicator.blur-active #gesture-text {
+    background: #ff6b6b;
+    color: white;
+}
+
+.gesture-indicator.normal-mode #gesture-text {
+    background: #51cf66;
+    color: white;
+}
+
+/* ==================== Controls ==================== */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==================== Gallery ==================== */
+.gallery {
+    margin-top: 40px;
+}
+
+.gallery h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #667eea;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+    transform: scale(1.1);
+}
+
+.photo-item .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 67, 67, 0.9);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.photo-item .delete-btn:hover {
+    background: rgba(255, 67, 67, 1);
+}
+
+/* ==================== Empty State ==================== */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.empty-state p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* ==================== Animations ==================== */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .photo-item img {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    header p {
+        font-size: 0.9em;
+    }
+
+    .main-content {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .photo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .photo-item img {
+        height: 100px;
+    }
+
+    .gesture-indicator {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+}
